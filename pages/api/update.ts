@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "PUT") {
-    const { id, title, content } = req.body;
+    const { id, title, content, name, email } = req.body;
 
     if (!id) {
       return res.status(400).json({ message: "Note ID is required" });
@@ -19,6 +19,8 @@ export default async function handler(
         data: {
           title,
           content,
+          name,
+          email,
         },
       });
       return res.status(200).json(updatedNote);
